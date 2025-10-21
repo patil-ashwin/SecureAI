@@ -26,10 +26,12 @@ yarn-error.log*
 # Logs
 logs/*.log
 
-# Environment variables
-.env
+# Environment variables (only ignore local overrides, not config files)
 .env.local
 .env.*.local
+
+# Root level .env with secrets (gitignored)
+/.env
 
 # IDE
 .vscode/
