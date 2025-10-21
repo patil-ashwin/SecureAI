@@ -1,0 +1,637 @@
+{
+  "patients": [
+    {
+      "patient_id": "HSP20251007-1452",
+      "name": "Ramesh Kumar",
+      "age": 46,
+      "gender": "Male",
+      "contact_number": "+91-9876543210",
+      "address": "12, 3rd Cross, Indiranagar, Bengaluru, Karnataka, India",
+      "date_of_birth": "1978-03-15",
+      "emergency_contact": "Priya Kumar (+91-9876543211)",
+      "insurance_id": "INS-2024-001234",
+      "admission_details": {
+        "admission_date": "2025-09-30",
+        "admitting_doctor": "Dr. Priya Mehta",
+        "department": "General Medicine",
+        "ward": "Ward 3B - Room 212",
+        "admission_reason": "Uncontrolled blood sugar levels and chest discomfort",
+        "chief_complaint": "High blood sugar and mild chest pain for 3 days"
+      },
+      "diagnosis": {
+        "primary_diagnosis": "Type 2 Diabetes Mellitus with Hypertension",
+        "secondary_diagnosis": [
+          "Mild chest pain (rule out cardiac cause)",
+          "Diabetic neuropathy (mild)"
+        ],
+        "icd_codes": ["E11.9", "I10", "G63.2"]
+      },
+      "procedures": [
+        {
+          "procedure_date": "2025-10-01",
+          "procedure_name": "ECG and 2D Echo",
+          "performed_by": "Dr. Nikhil Sharma",
+          "findings": "No significant cardiac abnormality"
+        },
+        {
+          "procedure_date": "2025-10-02",
+          "procedure_name": "Blood Sugar Monitoring & Insulin Titration",
+          "performed_by": "Nursing Staff",
+          "findings": "FBS and PPBS stabilized by Day 5"
+        }
+      ],
+      "lab_results": {
+        "blood_tests": {
+          "date": "2025-10-01",
+          "HbA1c": "8.9%",
+          "Fasting_Blood_Sugar": "162 mg/dL",
+          "Postprandial_Blood_Sugar": "238 mg/dL",
+          "Cholesterol": "210 mg/dL",
+          "Triglycerides": "185 mg/dL",
+          "Hemoglobin": "13.5 g/dL",
+          "Creatinine": "1.2 mg/dL",
+          "eGFR": "65 mL/min/1.73m²"
+        },
+        "urine_analysis": {
+          "date": "2025-10-01",
+          "protein": "Negative",
+          "sugar": "Trace",
+          "ketones": "Negative"
+        }
+      },
+      "treatment": {
+        "medications": [
+          {
+            "name": "Metformin",
+            "dosage": "500 mg",
+            "frequency": "Twice daily after meals",
+            "duration": "Ongoing",
+            "prescribed_by": "Dr. Priya Mehta"
+          },
+          {
+            "name": "Amlodipine",
+            "dosage": "5 mg",
+            "frequency": "Once daily at night",
+            "duration": "Ongoing",
+            "prescribed_by": "Dr. Priya Mehta"
+          },
+          {
+            "name": "Insulin Glargine",
+            "dosage": "10 units",
+            "frequency": "Once daily (bedtime)",
+            "duration": "Until next review",
+            "prescribed_by": "Dr. Priya Mehta"
+          }
+        ],
+        "diet_advice": "Low-salt, low-sugar, high-fiber diet recommended",
+        "exercise_advice": "Brisk walk 30 minutes daily",
+        "lifestyle_modifications": [
+          "Regular blood sugar monitoring",
+          "Foot care for diabetic neuropathy",
+          "Regular eye checkups"
+        ]
+      },
+      "progress_notes": [
+        {
+          "date": "2025-10-01",
+          "note": "Patient admitted with high fasting sugar and mild chest discomfort. ECG normal.",
+          "author": "Dr. Priya Mehta"
+        },
+        {
+          "date": "2025-10-03",
+          "note": "Blood sugar levels improving; insulin dose adjusted.",
+          "author": "Dr. Priya Mehta"
+        },
+        {
+          "date": "2025-10-05",
+          "note": "Patient stable. BP and sugar within range. No chest pain.",
+          "author": "Dr. Priya Mehta"
+        }
+      ],
+      "discharge_summary": {
+        "discharge_date": "2025-10-07",
+        "condition_on_discharge": "Stable and ambulatory",
+        "discharge_medications": [
+          "Metformin 500 mg BID",
+          "Amlodipine 5 mg OD",
+          "Insulin Glargine 10 units HS"
+        ],
+        "follow_up_advice": "Review after 2 weeks with fasting and postprandial blood sugar reports",
+        "follow_up_date": "2025-10-21",
+        "discharge_instructions": [
+          "Continue prescribed medications as advised.",
+          "Maintain diabetic diet and exercise routine.",
+          "Monitor blood sugar daily at home.",
+          "Visit emergency if chest pain or dizziness occurs."
+        ],
+        "discharge_physician": "Dr. Priya Mehta"
+      }
+    },
+    {
+      "patient_id": "HSP20251008-2156",
+      "name": "Sarah Johnson",
+      "age": 34,
+      "gender": "Female",
+      "contact_number": "+1-555-123-4567",
+      "address": "456 Oak Street, Springfield, IL 62701, USA",
+      "date_of_birth": "1990-08-22",
+      "emergency_contact": "Michael Johnson (+1-555-123-4568)",
+      "insurance_id": "BCBS-2024-789012",
+      "admission_details": {
+        "admission_date": "2025-10-01",
+        "admitting_doctor": "Dr. Emily Chen",
+        "department": "Cardiology",
+        "ward": "Ward 2A - Room 105",
+        "admission_reason": "Acute myocardial infarction",
+        "chief_complaint": "Severe chest pain radiating to left arm"
+      },
+      "diagnosis": {
+        "primary_diagnosis": "Acute ST-Elevation Myocardial Infarction (STEMI)",
+        "secondary_diagnosis": [
+          "Hypertension",
+          "Hyperlipidemia"
+        ],
+        "icd_codes": ["I21.9", "I10", "E78.5"]
+      },
+      "procedures": [
+        {
+          "procedure_date": "2025-10-01",
+          "procedure_name": "Primary PCI with Stent Placement",
+          "performed_by": "Dr. Robert Wilson",
+          "findings": "100% occlusion of LAD, successfully stented"
+        },
+        {
+          "procedure_date": "2025-10-02",
+          "procedure_name": "Echocardiogram",
+          "performed_by": "Dr. Lisa Martinez",
+          "findings": "EF 45%, mild wall motion abnormality"
+        }
+      ],
+      "lab_results": {
+        "blood_tests": {
+          "date": "2025-10-01",
+          "Troponin_I": "15.2 ng/mL",
+          "CK_MB": "45 U/L",
+          "Total_Cholesterol": "280 mg/dL",
+          "LDL": "180 mg/dL",
+          "HDL": "35 mg/dL",
+          "Triglycerides": "320 mg/dL",
+          "Hemoglobin": "12.8 g/dL",
+          "Creatinine": "0.9 mg/dL"
+        },
+        "cardiac_markers": {
+          "date": "2025-10-01",
+          "BNP": "450 pg/mL",
+          "D_Dimer": "0.8 mg/L"
+        }
+      },
+      "treatment": {
+        "medications": [
+          {
+            "name": "Aspirin",
+            "dosage": "81 mg",
+            "frequency": "Once daily",
+            "duration": "Lifelong",
+            "prescribed_by": "Dr. Emily Chen"
+          },
+          {
+            "name": "Clopidogrel",
+            "dosage": "75 mg",
+            "frequency": "Once daily",
+            "duration": "12 months",
+            "prescribed_by": "Dr. Emily Chen"
+          },
+          {
+            "name": "Atorvastatin",
+            "dosage": "80 mg",
+            "frequency": "Once daily at bedtime",
+            "duration": "Lifelong",
+            "prescribed_by": "Dr. Emily Chen"
+          },
+          {
+            "name": "Metoprolol",
+            "dosage": "25 mg",
+            "frequency": "Twice daily",
+            "duration": "Ongoing",
+            "prescribed_by": "Dr. Emily Chen"
+          }
+        ],
+        "diet_advice": "Cardiac diet - low sodium, low cholesterol, high fiber",
+        "exercise_advice": "Cardiac rehabilitation program starting in 2 weeks",
+        "lifestyle_modifications": [
+          "Smoking cessation (patient is non-smoker)",
+          "Weight management",
+          "Stress reduction techniques"
+        ]
+      },
+      "progress_notes": [
+        {
+          "date": "2025-10-01",
+          "note": "Patient presented with acute STEMI. Primary PCI performed successfully.",
+          "author": "Dr. Robert Wilson"
+        },
+        {
+          "date": "2025-10-03",
+          "note": "Patient stable post-PCI. No complications. Starting cardiac rehabilitation.",
+          "author": "Dr. Emily Chen"
+        },
+        {
+          "date": "2025-10-05",
+          "note": "Patient doing well. Ejection fraction improved to 50%. Ready for discharge.",
+          "author": "Dr. Emily Chen"
+        }
+      ],
+      "discharge_summary": {
+        "discharge_date": "2025-10-06",
+        "condition_on_discharge": "Stable, ambulatory, no chest pain",
+        "discharge_medications": [
+          "Aspirin 81 mg daily",
+          "Clopidogrel 75 mg daily",
+          "Atorvastatin 80 mg at bedtime",
+          "Metoprolol 25 mg BID"
+        ],
+        "follow_up_advice": "Cardiology follow-up in 1 week, cardiac rehab in 2 weeks",
+        "follow_up_date": "2025-10-13",
+        "discharge_instructions": [
+          "Take all medications as prescribed",
+          "Avoid heavy lifting for 1 week",
+          "Call 911 if chest pain returns",
+          "Attend cardiac rehabilitation program"
+        ],
+        "discharge_physician": "Dr. Emily Chen"
+      }
+    },
+    {
+      "patient_id": "HSP20251009-0934",
+      "name": "Ahmed Hassan",
+      "age": 28,
+      "gender": "Male",
+      "contact_number": "+971-50-123-4567",
+      "address": "Villa 15, Al Wasl Road, Dubai, UAE",
+      "date_of_birth": "1996-12-03",
+      "emergency_contact": "Fatima Hassan (+971-50-123-4568)",
+      "insurance_id": "DHA-2024-345678",
+      "admission_details": {
+        "admission_date": "2025-10-02",
+        "admitting_doctor": "Dr. Omar Al-Rashid",
+        "department": "Orthopedics",
+        "ward": "Ward 1C - Room 89",
+        "admission_reason": "Motor vehicle accident with multiple fractures",
+        "chief_complaint": "Severe pain in right leg and left arm after car accident"
+      },
+      "diagnosis": {
+        "primary_diagnosis": "Multiple fractures - right femur and left radius",
+        "secondary_diagnosis": [
+          "Soft tissue injuries",
+          "Mild concussion"
+        ],
+        "icd_codes": ["S72.001A", "S52.501A", "S06.0X0A"]
+      },
+      "procedures": [
+        {
+          "procedure_date": "2025-10-02",
+          "procedure_name": "Open Reduction Internal Fixation (ORIF) - Right Femur",
+          "performed_by": "Dr. Omar Al-Rashid",
+          "findings": "Comminuted fracture of right femur, successfully reduced and fixed with intramedullary nail"
+        },
+        {
+          "procedure_date": "2025-10-03",
+          "procedure_name": "ORIF - Left Radius",
+          "performed_by": "Dr. Omar Al-Rashid",
+          "findings": "Displaced fracture of left radius, reduced and fixed with plate and screws"
+        }
+      ],
+      "lab_results": {
+        "blood_tests": {
+          "date": "2025-10-02",
+          "Hemoglobin": "10.2 g/dL",
+          "Hematocrit": "30.5%",
+          "White_Blood_Cells": "12.5 K/μL",
+          "Platelets": "350 K/μL",
+          "Creatinine": "0.8 mg/dL",
+          "Glucose": "95 mg/dL"
+        },
+        "imaging": {
+          "date": "2025-10-02",
+          "CT_Head": "No acute intracranial abnormality",
+          "X_Ray_Femur": "Comminuted fracture right femur",
+          "X_Ray_Radius": "Displaced fracture left radius"
+        }
+      },
+      "treatment": {
+        "medications": [
+          {
+            "name": "Morphine",
+            "dosage": "5 mg",
+            "frequency": "Every 4 hours PRN",
+            "duration": "3 days",
+            "prescribed_by": "Dr. Omar Al-Rashid"
+          },
+          {
+            "name": "Ibuprofen",
+            "dosage": "400 mg",
+            "frequency": "Three times daily",
+            "duration": "7 days",
+            "prescribed_by": "Dr. Omar Al-Rashid"
+          },
+          {
+            "name": "Cefazolin",
+            "dosage": "1 g",
+            "frequency": "Every 8 hours",
+            "duration": "24 hours",
+            "prescribed_by": "Dr. Omar Al-Rashid"
+          }
+        ],
+        "diet_advice": "High protein diet to promote bone healing",
+        "exercise_advice": "Physical therapy starting day 3, non-weight bearing on right leg",
+        "lifestyle_modifications": [
+          "Use crutches for mobility",
+          "Keep surgical sites clean and dry",
+          "Attend all physical therapy sessions"
+        ]
+      },
+      "progress_notes": [
+        {
+          "date": "2025-10-02",
+          "note": "Patient admitted post-MVA with multiple fractures. ORIF procedures completed successfully.",
+          "author": "Dr. Omar Al-Rashid"
+        },
+        {
+          "date": "2025-10-04",
+          "note": "Patient stable post-operatively. Pain well controlled. Starting physical therapy.",
+          "author": "Dr. Omar Al-Rashid"
+        },
+        {
+          "date": "2025-10-06",
+          "note": "Patient progressing well. Wounds healing. Ready for discharge with home care instructions.",
+          "author": "Dr. Omar Al-Rashid"
+        }
+      ],
+      "discharge_summary": {
+        "discharge_date": "2025-10-07",
+        "condition_on_discharge": "Stable, ambulatory with crutches",
+        "discharge_medications": [
+          "Ibuprofen 400 mg TID for 7 days",
+          "Acetaminophen 500 mg QID PRN for pain"
+        ],
+        "follow_up_advice": "Orthopedic follow-up in 2 weeks, physical therapy 3 times per week",
+        "follow_up_date": "2025-10-21",
+        "discharge_instructions": [
+          "Non-weight bearing on right leg for 6 weeks",
+          "Keep surgical sites clean and dry",
+          "Attend physical therapy sessions",
+          "Return if signs of infection develop"
+        ],
+        "discharge_physician": "Dr. Omar Al-Rashid"
+      }
+    },
+    {
+      "patient_id": "HSP20251010-1745",
+      "name": "Maria Rodriguez",
+      "age": 52,
+      "gender": "Female",
+      "contact_number": "+34-91-123-4567",
+      "address": "Calle Mayor 123, Madrid, 28001, Spain",
+      "date_of_birth": "1972-05-18",
+      "emergency_contact": "Carlos Rodriguez (+34-91-123-4568)",
+      "insurance_id": "SNS-2024-567890",
+      "admission_details": {
+        "admission_date": "2025-10-03",
+        "admitting_doctor": "Dr. Ana Martinez",
+        "department": "Oncology",
+        "ward": "Ward 4B - Room 156",
+        "admission_reason": "Chemotherapy for breast cancer",
+        "chief_complaint": "Scheduled chemotherapy cycle 3 of 6"
+      },
+      "diagnosis": {
+        "primary_diagnosis": "Invasive Ductal Carcinoma of Right Breast (Stage IIB)",
+        "secondary_diagnosis": [
+          "Lymph node involvement (3/12 positive)",
+          "Estrogen receptor positive"
+        ],
+        "icd_codes": ["C50.911", "C77.2"]
+      },
+      "procedures": [
+        {
+          "procedure_date": "2025-09-15",
+          "procedure_name": "Lumpectomy with Sentinel Lymph Node Biopsy",
+          "performed_by": "Dr. Ana Martinez",
+          "findings": "2.5 cm invasive ductal carcinoma, 3/12 lymph nodes positive"
+        },
+        {
+          "procedure_date": "2025-10-03",
+          "procedure_name": "Chemotherapy - AC-T Regimen (Cycle 3)",
+          "performed_by": "Dr. Ana Martinez",
+          "findings": "Well tolerated, no immediate adverse reactions"
+        }
+      ],
+      "lab_results": {
+        "blood_tests": {
+          "date": "2025-10-03",
+          "White_Blood_Cells": "4.2 K/μL",
+          "Neutrophils": "2.1 K/μL",
+          "Hemoglobin": "11.8 g/dL",
+          "Platelets": "180 K/μL",
+          "Creatinine": "0.9 mg/dL",
+          "Bilirubin": "0.8 mg/dL"
+        },
+        "tumor_markers": {
+          "date": "2025-10-03",
+          "CA_15_3": "28 U/mL",
+          "CEA": "2.1 ng/mL"
+        }
+      },
+      "treatment": {
+        "medications": [
+          {
+            "name": "Doxorubicin",
+            "dosage": "60 mg/m²",
+            "frequency": "IV every 2 weeks",
+            "duration": "4 cycles",
+            "prescribed_by": "Dr. Ana Martinez"
+          },
+          {
+            "name": "Cyclophosphamide",
+            "dosage": "600 mg/m²",
+            "frequency": "IV every 2 weeks",
+            "duration": "4 cycles",
+            "prescribed_by": "Dr. Ana Martinez"
+          },
+          {
+            "name": "Ondansetron",
+            "dosage": "8 mg",
+            "frequency": "Before chemotherapy",
+            "duration": "As needed",
+            "prescribed_by": "Dr. Ana Martinez"
+          }
+        ],
+        "diet_advice": "High protein diet, small frequent meals, avoid spicy foods",
+        "exercise_advice": "Light walking as tolerated, avoid strenuous activity",
+        "lifestyle_modifications": [
+          "Avoid crowds to prevent infection",
+          "Maintain good oral hygiene",
+          "Report any fever or unusual symptoms immediately"
+        ]
+      },
+      "progress_notes": [
+        {
+          "date": "2025-10-03",
+          "note": "Patient receiving cycle 3 of AC chemotherapy. Tolerating well.",
+          "author": "Dr. Ana Martinez"
+        },
+        {
+          "date": "2025-10-04",
+          "note": "Patient stable post-chemotherapy. No immediate side effects noted.",
+          "author": "Dr. Ana Martinez"
+        },
+        {
+          "date": "2025-10-05",
+          "note": "Patient ready for discharge. Next cycle scheduled in 2 weeks.",
+          "author": "Dr. Ana Martinez"
+        }
+      ],
+      "discharge_summary": {
+        "discharge_date": "2025-10-05",
+        "condition_on_discharge": "Stable, tolerating chemotherapy well",
+        "discharge_medications": [
+          "Ondansetron 8 mg PRN for nausea",
+          "Acetaminophen 500 mg PRN for pain"
+        ],
+        "follow_up_advice": "Oncology follow-up in 1 week, next chemotherapy cycle in 2 weeks",
+        "follow_up_date": "2025-10-12",
+        "discharge_instructions": [
+          "Take anti-nausea medication as needed",
+          "Monitor temperature daily",
+          "Call if fever >100.4°F or severe nausea/vomiting",
+          "Maintain good nutrition and hydration"
+        ],
+        "discharge_physician": "Dr. Ana Martinez"
+      }
+    },
+    {
+      "patient_id": "HSP20251011-0823",
+      "name": "James Wilson",
+      "age": 67,
+      "gender": "Male",
+      "contact_number": "+44-20-7946-0958",
+      "address": "42 Baker Street, London, W1U 6TJ, UK",
+      "date_of_birth": "1957-11-30",
+      "emergency_contact": "Elizabeth Wilson (+44-20-7946-0959)",
+      "insurance_id": "NHS-2024-901234",
+      "admission_details": {
+        "admission_date": "2025-10-04",
+        "admitting_doctor": "Dr. Michael Thompson",
+        "department": "Neurology",
+        "ward": "Ward 5A - Room 203",
+        "admission_reason": "Acute stroke with left hemiparesis",
+        "chief_complaint": "Sudden weakness of left arm and leg, slurred speech"
+      },
+      "diagnosis": {
+        "primary_diagnosis": "Acute Ischemic Stroke - Right Middle Cerebral Artery",
+        "secondary_diagnosis": [
+          "Left hemiparesis",
+          "Dysarthria",
+          "Atrial fibrillation"
+        ],
+        "icd_codes": ["I63.9", "G81.9", "I48.91"]
+      },
+      "procedures": [
+        {
+          "procedure_date": "2025-10-04",
+          "procedure_name": "CT Angiography of Head and Neck",
+          "performed_by": "Dr. Michael Thompson",
+          "findings": "Occlusion of right MCA, no hemorrhagic conversion"
+        },
+        {
+          "procedure_date": "2025-10-04",
+          "procedure_name": "Thrombolytic Therapy (tPA)",
+          "performed_by": "Dr. Michael Thompson",
+          "findings": "Administered within 3 hours of symptom onset"
+        }
+      ],
+      "lab_results": {
+        "blood_tests": {
+          "date": "2025-10-04",
+          "INR": "1.1",
+          "PTT": "28 seconds",
+          "Platelets": "250 K/μL",
+          "Glucose": "120 mg/dL",
+          "Creatinine": "1.1 mg/dL",
+          "Hemoglobin": "13.2 g/dL"
+        },
+        "imaging": {
+          "date": "2025-10-04",
+          "CT_Head": "Acute infarct in right MCA territory",
+          "MRI_Brain": "Diffusion restriction in right MCA distribution"
+        }
+      },
+      "treatment": {
+        "medications": [
+          {
+            "name": "Aspirin",
+            "dosage": "325 mg",
+            "frequency": "Once daily",
+            "duration": "Lifelong",
+            "prescribed_by": "Dr. Michael Thompson"
+          },
+          {
+            "name": "Warfarin",
+            "dosage": "5 mg",
+            "frequency": "Once daily",
+            "duration": "Lifelong",
+            "prescribed_by": "Dr. Michael Thompson"
+          },
+          {
+            "name": "Atorvastatin",
+            "dosage": "40 mg",
+            "frequency": "Once daily at bedtime",
+            "duration": "Lifelong",
+            "prescribed_by": "Dr. Michael Thompson"
+          }
+        ],
+        "diet_advice": "Swallowing assessment pending, may need modified diet",
+        "exercise_advice": "Physical therapy and occupational therapy for stroke rehabilitation",
+        "lifestyle_modifications": [
+          "Fall prevention measures",
+          "Speech therapy for dysarthria",
+          "Regular INR monitoring for warfarin"
+        ]
+      },
+      "progress_notes": [
+        {
+          "date": "2025-10-04",
+          "note": "Patient presented with acute stroke. tPA administered. No immediate complications.",
+          "author": "Dr. Michael Thompson"
+        },
+        {
+          "date": "2025-10-06",
+          "note": "Patient showing improvement in left arm strength. Speech therapy started.",
+          "author": "Dr. Michael Thompson"
+        },
+        {
+          "date": "2025-10-08",
+          "note": "Patient stable, making good progress with rehabilitation. Ready for discharge planning.",
+          "author": "Dr. Michael Thompson"
+        }
+      ],
+      "discharge_summary": {
+        "discharge_date": "2025-10-09",
+        "condition_on_discharge": "Stable, left hemiparesis improving, ambulatory with assistance",
+        "discharge_medications": [
+          "Aspirin 325 mg daily",
+          "Warfarin 5 mg daily (INR target 2-3)",
+          "Atorvastatin 40 mg at bedtime"
+        ],
+        "follow_up_advice": "Neurology follow-up in 2 weeks, stroke rehabilitation program",
+        "follow_up_date": "2025-10-23",
+        "discharge_instructions": [
+          "Continue stroke rehabilitation exercises",
+          "Monitor INR weekly",
+          "Call if new neurological symptoms develop",
+          "Use assistive devices for mobility"
+        ],
+        "discharge_physician": "Dr. Michael Thompson"
+      }
+    }
+  ]
+}

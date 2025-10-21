@@ -1,0 +1,17 @@
+/* src/styles/themes/dark.css */
+[data-theme="dark"] {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-hover: #30363d;
+  --bg-input: #0d1117;
+  --bg-border: #30363d;
+  
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-tertiary: #6e7681;
+  
+  --accent-primary: #238636;
+  --accent-secondary: #1f6feb;
+  --accent-danger: #f85149;
+}

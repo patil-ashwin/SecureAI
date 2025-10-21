@@ -1,0 +1,188 @@
+.message {
+  margin-bottom: 24px;
+  animation: messageAppear 0.3s ease-out;
+}
+
+.messageRow {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messageContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.messageContent {
+  color: #ececec;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  font-family: "Söhne", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+}
+
+/* User Messages */
+.user .messageContent {
+  background: #2f2f2f;
+  border: 1px solid #4d4d4f;
+  padding: 16px 20px;
+  border-radius: 18px;
+  margin-left: 15%;
+  margin-bottom: 8px;
+  align-self: flex-end;
+  max-width: 85%;
+}
+
+.user .messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Assistant Messages */
+.assistant .messageContent {
+  background: transparent;
+  padding: 16px 0;
+  margin-right: 15%;
+  align-self: flex-start;
+  max-width: 85%;
+}
+
+.assistant .messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.assistant .messageContent p {
+  margin-bottom: 16px;
+}
+
+.assistant .messageContent p:last-child {
+  margin-bottom: 0;
+}
+
+/* System Messages */
+.system .messageContent {
+  background: #1a1a1a;
+  border: 1px solid #404040;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #8e8ea0;
+  margin: 0 5%;
+  align-self: flex-start;
+  max-width: 90%;
+}
+
+.system .messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Error Messages */
+.error .messageContent {
+  background: #2d1b1b;
+  border: 1px solid #8b1a1a;
+  padding: 16px 20px;
+  border-radius: 12px;
+  color: #ff6b6b;
+  margin: 0 5%;
+  align-self: flex-start;
+  max-width: 90%;
+}
+
+.error .messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.errorText {
+  color: inherit;
+  font-weight: 500;
+}
+
+.parameterForm,
+.exportSection,
+.suggestionsSection {
+  margin-top: 16px;
+  padding: 16px;
+  background: #1a1a1a;
+  border: 1px solid #404040;
+  border-radius: 12px;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Professional code styling */
+.messageContent pre {
+  background: #1a1a1a;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.messageContent code {
+  background: #2a2a2a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* Timestamp Styling */
+.messageTime {
+  font-size: 12px;
+  color: #8e8ea0;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+.user .messageTime {
+  align-self: flex-end;
+  margin-right: 15%;
+}
+
+.assistant .messageTime,
+.system .messageTime,
+.error .messageTime {
+  align-self: flex-start;
+  margin-left: 15%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .messageRow {
+    padding: 0 20px;
+  }
+  
+  .user .messageContent,
+  .assistant .messageContent {
+    margin-left: 5%;
+    margin-right: 5%;
+    max-width: 90%;
+  }
+  
+  .user .messageTime,
+  .assistant .messageTime,
+  .system .messageTime,
+  .error .messageTime {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}

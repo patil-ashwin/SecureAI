@@ -1,0 +1,186 @@
+{
+  "phiDetection": {
+    "enabled": true,
+    "confidence": 0.6,
+    "entities": [
+      "PERSON",
+      "EMAIL",
+      "PHONE",
+      "SSN",
+      "CREDIT_CARD",
+      "DATE_OF_BIRTH",
+      "ADDRESS"
+    ],
+    "realTimeDetection": true
+  },
+  "maskingStrategies": {
+    "PERSON": {
+      "enabled": true,
+      "pattern": {
+        "type": "show_first",
+        "showFirst": 1,
+        "showLast": 0,
+        "maskChar": "*",
+        "preserveFormat": false
+      },
+      "context": [
+        "API",
+        "LLM",
+        "LOGS"
+      ],
+      "description": "Show first initial, mask rest (e.g., J*** S***)"
+    },
+    "EMAIL": {
+      "enabled": true,
+      "pattern": {
+        "type": "custom",
+        "showFirst": 1,
+        "showLast": 0,
+        "maskChar": "*",
+        "separator": "@",
+        "preserveFormat": true
+      },
+      "context": [
+        "LOGS",
+        "API"
+      ],
+      "description": "Show first char and domain (e.g., j***@company.com)"
+    },
+    "PHONE": {
+      "enabled": true,
+      "pattern": {
+        "type": "show_last",
+        "showFirst": 0,
+        "showLast": 4,
+        "maskChar": "*",
+        "preserveFormat": true
+      },
+      "context": [
+        "API",
+        "LLM",
+        "LOGS"
+      ],
+      "description": "Show last 4 digits (e.g., ***-***-1234)"
+    },
+    "SSN": {
+      "enabled": true,
+      "pattern": {
+        "type": "show_last",
+        "showFirst": 0,
+        "showLast": 4,
+        "maskChar": "*",
+        "preserveFormat": true
+      },
+      "context": [
+        "API",
+        "LLM"
+      ],
+      "description": "Show last 4 digits (e.g., ***-**-1234)"
+    },
+    "CREDIT_CARD": {
+      "enabled": true,
+      "pattern": {
+        "type": "show_first_last",
+        "showFirst": 4,
+        "showLast": 4,
+        "maskChar": "*",
+        "preserveFormat": true
+      },
+      "context": [
+        "DATABASE",
+        "API",
+        "LOGS"
+      ],
+      "description": "Show first 4 and last 4 (e.g., 1234-****-****-5678)"
+    },
+    "DATE_OF_BIRTH": {
+      "enabled": true,
+      "pattern": {
+        "type": "show_last",
+        "showFirst": 0,
+        "showLast": 4,
+        "maskChar": "*",
+        "preserveFormat": true
+      },
+      "context": [
+        "LOGS"
+      ],
+      "description": "Show only year (e.g., **/**/1985)"
+    },
+    "ADDRESS": {
+      "enabled": true,
+      "pattern": {
+        "type": "show_last",
+        "showFirst": 0,
+        "showLast": 15,
+        "maskChar": "*",
+        "preserveFormat": false
+      },
+      "context": [
+        "LOGS"
+      ],
+      "description": "Show city/state only"
+    }
+  },
+  "auditSettings": {
+    "enabled": true,
+    "logLevel": "INFO",
+    "retentionDays": 90,
+    "realTimeAlerts": true
+  },
+  "roleBasedAccess": {
+    "doctor": {
+      "phiAccess": "full",
+      "canDecrypt": true,
+      "canGeneratePDF": true,
+      "allowedEntities": [
+        "PERSON",
+        "EMAIL",
+        "PHONE",
+        "SSN",
+        "DATE_OF_BIRTH"
+      ]
+    },
+    "nurse": {
+      "phiAccess": "masked",
+      "canDecrypt": false,
+      "canGeneratePDF": false,
+      "allowedEntities": [
+        "PERSON",
+        "EMAIL"
+      ]
+    },
+    "supervisor": {
+      "phiAccess": "full",
+      "canDecrypt": true,
+      "canGeneratePDF": true,
+      "allowedEntities": [
+        "PERSON",
+        "EMAIL",
+        "PHONE",
+        "SSN",
+        "CREDIT_CARD",
+        "DATE_OF_BIRTH"
+      ]
+    },
+    "admin": {
+      "phiAccess": "full",
+      "canDecrypt": true,
+      "canGeneratePDF": true,
+      "allowedEntities": [
+        "PERSON",
+        "EMAIL",
+        "PHONE",
+        "SSN",
+        "CREDIT_CARD",
+        "DATE_OF_BIRTH"
+      ]
+    }
+  },
+  "systemSettings": {
+    "apiEndpoint": "http://localhost:8002",
+    "encryptionKey": "healthcare-phi-key",
+    "syncInterval": 5,
+    "offlineMode": true
+  }
+}

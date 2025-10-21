@@ -1,0 +1,23 @@
+# Discharge Summary Backend Requirements
+fastapi==0.115.5
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.6.1
+httpx==0.27.2
+
+# FAISS for vector similarity search
+faiss-cpu==1.8.0
+sentence-transformers==2.2.2
+
+# Azure OpenAI
+numpy==1.26.4
+
+# Langfuse for LLM observability
+langfuse==2.53.5
+
+# AWS Bedrock
+boto3==1.35.76
+
+# SecureAI SDK (local)
+# Install with: pip install -e ../python-sdk
+

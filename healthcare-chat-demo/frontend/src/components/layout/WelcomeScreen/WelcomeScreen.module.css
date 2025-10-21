@@ -1,0 +1,215 @@
+/* WelcomeScreen.module.css */
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.greetingSection {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.greetingTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ececec;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.greetingSubtitle {
+  font-size: 1.25rem;
+  color: #8e8ea0;
+  margin: 0;
+  font-weight: 400;
+}
+
+.messagesSection {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  max-height: 60vh;
+  padding: 0 20px;
+}
+
+.inputSection {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.inputForm {
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  background: #2f2f2f;
+  border-radius: 25px;
+  border: 1px solid #4d4d4f;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 4px 4px 4px 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inputWrapper:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.inputField {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #ececec;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 12px 16px;
+  outline: none;
+  font-weight: 400;
+  width: 100%;
+}
+
+.inputField::placeholder {
+  color: #8e8ea0;
+  font-weight: 400;
+}
+
+.sendButton {
+  width: 36px;
+  height: 36px;
+  background: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 8px;
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+.sendButton:hover:not(:disabled) {
+  background: #0056b3;
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #6c757d;
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.loadingSpinner {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingSpinner::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Progress Indicator */
+.progressIndicator {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progressText {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #8e8ea0;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.progressDots {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.progressDots span {
+  width: 4px;
+  height: 4px;
+  background: #007bff;
+  border-radius: 50%;
+  animation: progressDots 1.4s infinite ease-in-out both;
+}
+
+.progressDots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.progressDots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.progressDots span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes progressDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .welcomeContainer {
+    padding: 20px 10px;
+  }
+  
+  .greetingTitle {
+    font-size: 2rem;
+  }
+  
+  .greetingSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .inputWrapper {
+    padding: 4px 4px 4px 16px;
+  }
+  
+  .sendButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+  }
+}

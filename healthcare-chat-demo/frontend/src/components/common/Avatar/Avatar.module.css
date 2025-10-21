@@ -1,0 +1,40 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.small {
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+
+.medium {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+
+.large {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.user {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.assistant {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.system {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}

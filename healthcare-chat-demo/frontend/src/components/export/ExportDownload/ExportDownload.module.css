@@ -1,0 +1,163 @@
+/* src/components/ExportDownload.module.css */
+
+.container {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #475569;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e2e8f0;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.errorIcon {
+  font-size: 18px;
+}
+
+.errorText {
+  color: #dc2626;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.noteText {
+  color: #6b7280;
+  font-size: 12px;
+  background: #fef3c7;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #f59e0b;
+}
+
+.successContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.successIcon {
+  font-size: 18px;
+}
+
+.successText {
+  color: #059669;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.downloadButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.downloadButton:active {
+  transform: translateY(0);
+}
+
+.pdfButton {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+}
+
+.pdfButton:hover {
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+}
+
+.excelButton {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: white;
+}
+
+.excelButton:hover {
+  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+}
+
+.buttonIcon {
+  font-size: 16px;
+}
+
+.buttonText {
+  font-family: inherit;
+}
+
+.timestamp {
+  color: #6b7280;
+  font-size: 11px;
+  text-align: center;
+  font-style: italic;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+    margin: 12px 0;
+  }
+  
+  .buttonContainer {
+    flex-direction: column;
+  }
+  
+  .downloadButton {
+    width: 100%;
+    min-width: unset;
+  }
+}

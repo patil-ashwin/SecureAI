@@ -1,0 +1,17 @@
+/* src/styles/themes/light.css */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-hover: #e5e7eb;
+  --bg-input: #ffffff;
+  --bg-border: #d1d5db;
+  
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  
+  --accent-primary: #16a34a;
+  --accent-secondary: #2563eb;
+  --accent-danger: #dc2626;
+}

@@ -1,0 +1,72 @@
+.time-greeting {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.greeting-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.greeting-icon {
+  font-size: 2.5em;
+  min-width: 60px;
+  text-align: center;
+}
+
+.greeting-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.greeting-main {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-size: 1.8em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.greeting-subtitle {
+  margin: 0 0 8px 0;
+  color: #a0a0a0;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.greeting-role {
+  margin: 0;
+  color: #4a9eff;
+  font-size: 0.9em;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .greeting-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .greeting-icon {
+    font-size: 2em;
+  }
+  
+  .greeting-main {
+    font-size: 1.5em;
+  }
+  
+  .greeting-subtitle,
+  .greeting-role {
+    font-size: 0.9em;
+  }
+}

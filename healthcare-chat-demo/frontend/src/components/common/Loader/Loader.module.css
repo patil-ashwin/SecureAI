@@ -1,0 +1,74 @@
+.loaderContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  border: 2px solid var(--bg-border);
+  border-top-color: var(--accent-secondary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.small {
+  width: 14px;
+  height: 14px;
+  border-width: 1.5px;
+}
+
+.medium {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.large {
+  width: 20px;
+  height: 20px;
+  border-width: 2.5px;
+}
+
+.loadingDots {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loadingDots span:not(.text) {
+  width: 4px;
+  height: 4px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
+  animation: loadingDots 1.4s ease-in-out infinite both;
+}
+
+.loadingDots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loadingDots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.text {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loadingDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

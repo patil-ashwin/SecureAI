@@ -1,0 +1,91 @@
+/* src/components/auth/OAuthCallback/OAuthCallback.module.css */
+.callbackContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.processingMessage, .errorMessage {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.processingMessage h2, .errorMessage h2 {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+}
+
+.processingMessage p, .errorMessage p {
+  margin: 0 0 1rem 0;
+  color: var(--text-secondary);
+}
+
+.errorMessage button {
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.errorMessage button:hover {
+  background: var(--accent-primary-hover);
+}
+
+/* Add to existing OAuthCallback.module.css */
+
+.errorActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.retryButton, .homeButton {
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.homeButton {
+  background: var(--text-secondary);
+}
+
+.retryButton:hover {
+  background: var(--accent-primary-hover);
+}
+
+.homeButton:hover {
+  background: var(--text-primary);
+}

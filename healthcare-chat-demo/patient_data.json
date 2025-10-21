@@ -1,0 +1,111 @@
+{
+  "patient": {
+    "patient_id": "HSP20251007-1452",
+    "name": "Ramesh Kumar",
+    "age": 46,
+    "gender": "Male",
+    "contact_number": "+91-9876543210",
+    "address": "12, 3rd Cross, Indiranagar, Bengaluru, Karnataka, India"
+  },
+  "admission_details": {
+    "admission_date": "2025-09-30",
+    "admitting_doctor": "Dr. Priya Mehta",
+    "department": "General Medicine",
+    "ward": "Ward 3B - Room 212",
+    "admission_reason": "Uncontrolled blood sugar levels and chest discomfort"
+  },
+  "diagnosis": {
+    "primary_diagnosis": "Type 2 Diabetes Mellitus with Hypertension",
+    "secondary_diagnosis": [
+      "Mild chest pain (rule out cardiac cause)",
+      "Diabetic neuropathy (mild)"
+    ]
+  },
+  "procedures": [
+    {
+      "procedure_date": "2025-10-01",
+      "procedure_name": "ECG and 2D Echo",
+      "performed_by": "Dr. Nikhil Sharma",
+      "findings": "No significant cardiac abnormality"
+    },
+    {
+      "procedure_date": "2025-10-02",
+      "procedure_name": "Blood Sugar Monitoring & Insulin Titration",
+      "performed_by": "Nursing Staff",
+      "findings": "FBS and PPBS stabilized by Day 5"
+    }
+  ],
+  "lab_results": {
+    "blood_tests": {
+      "date": "2025-10-01",
+      "HbA1c": "8.9%",
+      "Fasting_Blood_Sugar": "162 mg/dL",
+      "Postprandial_Blood_Sugar": "238 mg/dL",
+      "Cholesterol": "210 mg/dL",
+      "Triglycerides": "185 mg/dL",
+      "Hemoglobin": "13.5 g/dL"
+    },
+    "urine_analysis": {
+      "date": "2025-10-01",
+      "protein": "Negative",
+      "sugar": "Trace",
+      "ketones": "Negative"
+    }
+  },
+  "treatment": {
+    "medications": [
+      {
+        "name": "Metformin",
+        "dosage": "500 mg",
+        "frequency": "Twice daily after meals",
+        "duration": "Ongoing"
+      },
+      {
+        "name": "Amlodipine",
+        "dosage": "5 mg",
+        "frequency": "Once daily at night",
+        "duration": "Ongoing"
+      },
+      {
+        "name": "Insulin Glargine",
+        "dosage": "10 units",
+        "frequency": "Once daily (bedtime)",
+        "duration": "Until next review"
+      }
+    ],
+    "diet_advice": "Low-salt, low-sugar, high-fiber diet recommended",
+    "exercise_advice": "Brisk walk 30 minutes daily"
+  },
+  "progress_notes": [
+    {
+      "date": "2025-10-01",
+      "note": "Patient admitted with high fasting sugar and mild chest discomfort. ECG normal."
+    },
+    {
+      "date": "2025-10-03",
+      "note": "Blood sugar levels improving; insulin dose adjusted."
+    },
+    {
+      "date": "2025-10-05",
+      "note": "Patient stable. BP and sugar within range. No chest pain."
+    }
+  ],
+  "discharge_summary": {
+    "discharge_date": "2025-10-07",
+    "condition_on_discharge": "Stable and ambulatory",
+    "discharge_medications": [
+      "Metformin 500 mg BID",
+      "Amlodipine 5 mg OD",
+      "Insulin Glargine 10 units HS"
+    ],
+    "follow_up_advice": "Review after 2 weeks with fasting and postprandial blood sugar reports",
+    "follow_up_date": "2025-10-21",
+    "discharge_instructions": [
+      "Continue prescribed medications as advised.",
+      "Maintain diabetic diet and exercise routine.",
+      "Monitor blood sugar daily at home.",
+      "Visit emergency if chest pain or dizziness occurs."
+    ]
+  }
+}
+
