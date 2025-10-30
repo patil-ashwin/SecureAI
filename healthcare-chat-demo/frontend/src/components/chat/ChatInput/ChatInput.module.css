@@ -1,6 +1,6 @@
 /* src/components/chat/ChatInput/ChatInput.module.css */
 .inputContainer {
-  padding: 0;
+  padding: 0 0 20px 0; /* add some bottom padding so the box breathes at the bottom */
   background: transparent;
   position: relative;
   z-index: 100;

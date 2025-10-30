@@ -12,6 +12,22 @@
   overflow: hidden;
 }
 
+/* Ensure the central chat area can shrink and allow inner lists to scroll */
+.chatContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0; /* critical to allow children (MessageList) to scroll */
+}
+
+.chatHeader {
+  flex-shrink: 0;
+}
+
+.newChatButton {
+  cursor: pointer;
+}
+
 .inputWrapper {
   width: 100%;
   max-width: 1000px;

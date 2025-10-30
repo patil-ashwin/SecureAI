@@ -392,29 +392,52 @@ def detect_and_protect_phi(message: str, use_fpe: bool = True) -> Dict:
     # Process each detected entity
     for entity in detection_result.entities:
         entity_type = entity.entity_type if isinstance(entity.entity_type, str) else entity.entity_type.value
-        original_value = entity.value
+        original_value_raw = entity.value
         start_pos = entity.start
         end_pos = entity.end
         
+        # Clean the entity value to remove common command verbs like "Show", "List", etc.
+        cleaned_value, verb_prefix = clean_entity_value(original_value_raw)
+        
+        # Use cleaned value for encryption (only the PII part, not the verb)
+        original_value = cleaned_value
+        
         if use_fpe:
-            # Apply FPE encryption
-            try:
-                encrypted_value = encryptor.encrypt(original_value)
-                masked_value = encrypted_value
-                # Store both forward and reverse mappings for FPE
-                fpe_mappings[encrypted_value] = original_value
-                fpe_mappings[original_value] = encrypted_value
-            except Exception as e:
-                print(f"FPE encryption error for {entity_type}: {e}")
-                # Fallback to character masking if FPE fails
-                masked_value = apply_character_masking(original_value, entity_type)
+            # For PERSON names, use RealisticMasker for more natural-looking names
+            if entity_type.upper() == "PERSON":
+                try:
+                    masked_value = realistic_masker.mask_person_name(original_value)
+                    # Store realistic masked value -> original mapping for decryption
+                    fpe_mappings[masked_value] = original_value
+                except Exception as e:
+                    print(f"Realistic masking error for {entity_type}: {e}")
+                    # Fallback to FPE
+                    try:
+                        encrypted_value = encryptor.encrypt(original_value)
+                        masked_value = encrypted_value
+                        fpe_mappings[encrypted_value] = original_value
+                    except Exception as e2:
+                        print(f"FPE encryption error for {entity_type}: {e2}")
+                        masked_value = apply_character_masking(original_value, entity_type)
+            else:
+                # For other entity types, use FPE encryption
+                try:
+                    encrypted_value = encryptor.encrypt(original_value)
+                    masked_value = encrypted_value
+                    # Store only encrypted -> original mapping for decryption
+                    fpe_mappings[encrypted_value] = original_value
+                except Exception as e:
+                    print(f"FPE encryption error for {entity_type}: {e}")
+                    # Fallback to character masking if FPE fails
+                    masked_value = apply_character_masking(original_value, entity_type)
         else:
             # Apply character-based masking from configuration
             masked_value = apply_character_masking(original_value, entity_type)
         
+        # Log the cleaned value (without verb)
         entities.append({
             "type": entity_type,
-            "original": original_value,
+            "original": original_value,  # This is the cleaned value (just the name, no verb)
             "masked": masked_value,
             "encrypted": masked_value if use_fpe else None,
             "start": start_pos,
@@ -422,11 +445,17 @@ def detect_and_protect_phi(message: str, use_fpe: bool = True) -> Dict:
             "confidence": entity.confidence
         })
         
-        # Store mapping for decryption
+        # Store mapping for decryption (using cleaned value)
         mappings[original_value] = masked_value
         
-        # Replace in text
-        protected_text = protected_text.replace(original_value, masked_value)
+        # Replace the full detected phrase in text, preserving verb if present
+        if verb_prefix:
+            # Replace "Show Ramesh Kumar" with "Show [encrypted]"
+            replacement = f"{verb_prefix} {masked_value}"
+            protected_text = protected_text.replace(original_value_raw, replacement)
+        else:
+            # No verb to preserve, replace directly
+            protected_text = protected_text.replace(original_value_raw, masked_value)
     
     return {
         "entities": entities,
@@ -453,6 +482,27 @@ def decrypt_response(response: str, fpe_mappings: Dict, use_fpe: bool = True) ->
                 decrypted = decrypted.replace(encrypted_value, original_value)
     
     return decrypted
+
+
+def clean_entity_value(value: str) -> tuple:
+    """
+    Remove common command verbs from the start of detected entity values.
+    Returns: (cleaned_value, verb_prefix)
+    """
+    common_verbs = ["show", "list", "get", "provide", "give", "display", "tell", "find", "fetch"]
+    value_lower = value.lower().strip()
+    value_stripped = value.strip()
+    
+    for verb in common_verbs:
+        if value_lower.startswith(verb + " "):
+            # Remove verb and the following space
+            cleaned = value_stripped[len(verb) + 1:].strip()
+            verb_part = value_stripped[:len(verb)].strip()
+            if cleaned:  # Only return if there's something left
+                return cleaned, verb_part
+    
+    # No verb prefix found
+    return value_stripped, ""
 
 
 def prepare_patient_context(patient_id: str) -> str:
@@ -562,23 +612,42 @@ def create_encrypted_context(patient_data: Dict, encrypt_pii: bool = True) -> tu
         import copy
         encrypted_data = copy.deepcopy(patient_data)
         
-        # Encrypt PII/PHI fields using FPE
+        # Encrypt PII/PHI fields using FPE or RealisticMasker
         def encrypt_field(value, field_name=""):
             """Recursively encrypt sensitive fields"""
             if isinstance(value, str) and value and len(value) > 0:
                 # Detect if this field contains PII
                 detection_result = detector.detect(value)
                 if detection_result.entities:
-                    # Encrypt the value with FPE
-                    try:
-                        encrypted_value = encryptor.encrypt(value)
-                        # Store mapping for decryption
-                        fpe_mappings[encrypted_value] = value
-                        fpe_mappings[value] = encrypted_value
-                        return encrypted_value
-                    except Exception as e:
-                        print(f"FPE encryption error for field {field_name}: {e}")
-                        return value
+                    # Check if this is a PERSON name - use RealisticMasker for names
+                    is_person = any(e.entity_type.value.upper() == "PERSON" if hasattr(e.entity_type, 'value') else str(e.entity_type).upper() == "PERSON" for e in detection_result.entities)
+                    
+                    if is_person:
+                        # Use RealisticMasker for more natural-looking names
+                        try:
+                            masked_value = realistic_masker.mask_person_name(value)
+                            fpe_mappings[masked_value] = value
+                            return masked_value
+                        except Exception as e:
+                            print(f"Realistic masking error for field {field_name}: {e}")
+                            # Fallback to FPE
+                            try:
+                                encrypted_value = encryptor.encrypt(value)
+                                fpe_mappings[encrypted_value] = value
+                                return encrypted_value
+                            except Exception as e2:
+                                print(f"FPE encryption error for field {field_name}: {e2}")
+                                return value
+                    else:
+                        # For other entity types, use FPE encryption
+                        try:
+                            encrypted_value = encryptor.encrypt(value)
+                            # Store only encrypted -> original mapping for decryption
+                            fpe_mappings[encrypted_value] = value
+                            return encrypted_value
+                        except Exception as e:
+                            print(f"FPE encryption error for field {field_name}: {e}")
+                            return value
                 return value
             elif isinstance(value, dict):
                 return {k: encrypt_field(v, f"{field_name}.{k}") for k, v in value.items()}
@@ -775,6 +844,110 @@ def format_medications(medications, show_names=True):
             formatted.append(f"- {med.get('name', 'Unknown')}: {med.get('dosage', 'N/A')} {med.get('frequency', 'N/A')}")
     
     return '\n'.join(formatted)
+
+
+def infer_requested_sections(query_text: str) -> List[str]:
+    """Infer which sections the user asked for from the query text.
+    Returns a list drawn from: ["labs", "medications", "diagnosis", "discharge", "details", "all"].
+    Defaults to ["all"] if no clear signal.
+    """
+    if not query_text:
+        return ["all"]
+    q = query_text.lower()
+    sections: List[str] = []
+    if "lab" in q:
+        sections.append("labs")
+    if "med" in q or "drug" in q or "rx" in q:
+        sections.append("medications")
+    if "diagnos" in q or "dx" in q:
+        sections.append("diagnosis")
+    if "discharge" in q or "follow-up" in q or "follow up" in q:
+        sections.append("discharge")
+    if "detail" in q:
+        sections.append("details")
+    if "all" in q or "summary" in q:
+        sections = ["all"]
+    if not sections:
+        sections = ["all"]
+    # de-duplicate while keeping order
+    seen = set()
+    ordered = []
+    for s in sections:
+        if s not in seen:
+            seen.add(s)
+            ordered.append(s)
+    return ordered
+
+
+def format_sections_for_role(patient: Dict, diagnosis: Dict, treatment: Dict, lab_results: Dict, discharge: Dict, user_role: str, sections: List[str]) -> str:
+    """Create a markdown response containing only requested sections, respecting role.
+    - If sections == ["all"], reuse existing role-based formatters.
+    - Otherwise, return only the requested parts.
+    Nurses will have the patient name masked in 'details'.
+    """
+    if sections == ["all"]:
+        # Use existing comprehensive role-based formats
+        if user_role == "doctor":
+            return format_doctor_response(patient, diagnosis, treatment, lab_results, discharge)
+        if user_role == "supervisor":
+            return format_supervisor_response(patient, diagnosis, treatment, lab_results, discharge)
+        if user_role == "admin":
+            return format_admin_response(patient, diagnosis, treatment, lab_results, discharge)
+        return format_nurse_response(patient, diagnosis, treatment, lab_results, discharge)
+
+    lines: List[str] = []
+
+    # Details
+    if "details" in sections:
+        if user_role in ["doctor", "supervisor", "admin"]:
+            name = patient.get('name', 'N/A')
+        else:
+            name = apply_character_masking(patient.get('name', 'Unknown'), 'PERSON')
+        lines.append("**Patient Details:**")
+        lines.append(f"- Name: {name}")
+        lines.append(f"- Age: {patient.get('age', 'N/A')} years")
+        lines.append(f"- Gender: {patient.get('gender', 'N/A')}")
+        lines.append("")
+
+    # Diagnosis
+    if "diagnosis" in sections:
+        lines.append("**Diagnosis:**")
+        lines.append(f"- Primary: {diagnosis.get('primary_diagnosis', 'N/A')}")
+        secondary = diagnosis.get('secondary_diagnosis', [])
+        if secondary:
+            lines.append(f"- Secondary: {', '.join(secondary)}")
+        lines.append("")
+
+    # Medications
+    if "medications" in sections:
+        lines.append("**Current Medications:**")
+        lines.append(format_medications(treatment.get('medications', []), show_names=True))
+        lines.append("")
+
+    # Labs
+    if "labs" in sections:
+        labs = lab_results.get('blood_tests', {})
+        lines.append("**Lab Results:**")
+        if labs:
+            for key in ["HbA1c", "Fasting_Blood_Sugar", "Postprandial_Blood_Sugar", "Cholesterol"]:
+                if key in labs:
+                    pretty = key.replace('_', ' ')
+                    lines.append(f"- {pretty}: {labs[key]}")
+        else:
+            lines.append("- No recent labs available")
+        lines.append("")
+
+    # Discharge
+    if "discharge" in sections:
+        lines.append("**Discharge Status:**")
+        lines.append(f"- Condition: {discharge.get('condition_on_discharge', 'N/A')}")
+        follow = discharge.get('follow_up_advice', 'N/A')
+        if follow:
+            lines.append(f"- Follow-up: {follow}")
+        lines.append("")
+
+    result = '\n'.join([ln for ln in lines if ln is not None])
+    return result.strip() if result.strip() else "No matching information found."
 
 
 def mask_pii_data(data, mask_char="*", show_first=0, show_last=0):
@@ -1279,18 +1452,41 @@ async def chat(request: ChatMessage):
     # Determine if user is authorized to see original PHI
     is_authorized = check_phi_access(request.user_role, user_info)
     
-    if is_authorized:
-        # For authorized users (doctors, supervisors, admins): Decrypt FPE and show original data
-        decrypted_response = decrypt_response(ai_response, all_fpe_mappings, use_fpe=True)
-        # Apply role-based formatting with full data
-        decrypted_response = apply_role_based_response(decrypted_response, request.user_role, patient_data_for_response, is_authorized=True, user_info=user_info)
-        decryption_note = f"FPE decrypted - Full PHI access for {request.user_role}"
+    # Infer requested sections from the original user prompt
+    requested_sections = infer_requested_sections(user_message)
+
+    # Decrypt model output first
+    base_decrypted = decrypt_response(ai_response, all_fpe_mappings, use_fpe=True)
+
+    # Extract normalized medical structures for section formatting
+    if "patient" in patient_data_for_response:
+        patient_struct = patient_data_for_response["patient"]
     else:
-        # For nurses: Decrypt FPE first, then apply character-based masking for display
-        decrypted_response = decrypt_response(ai_response, all_fpe_mappings, use_fpe=True)
-        # Apply role-based formatting with masked PII
-        decrypted_response = apply_role_based_response(decrypted_response, request.user_role, patient_data_for_response, is_authorized=False, user_info=user_info)
-        decryption_note = f"FPE decrypted - PII masked for {request.user_role} display"
+        patient_struct = patient_data_for_response
+
+    diagnosis_struct = patient_struct.get("diagnosis", {})
+    treatment_struct = patient_struct.get("treatment", {})
+    lab_results_struct = patient_struct.get("lab_results", {})
+    discharge_struct = patient_struct.get("discharge_summary", {})
+
+    # Build response according to requested sections and role
+    decrypted_response = format_sections_for_role(
+        patient_struct,
+        diagnosis_struct,
+        treatment_struct,
+        lab_results_struct,
+        discharge_struct,
+        request.user_role,
+        requested_sections,
+    )
+    # Fallback to role-based comprehensive if formatter returned empty
+    if not decrypted_response:
+        decrypted_response = apply_role_based_response(base_decrypted, request.user_role, patient_data_for_response, is_authorized=is_authorized, user_info=user_info)
+
+    decryption_note = (
+        f"FPE decrypted - Full PHI access for {request.user_role}" if is_authorized
+        else f"FPE decrypted - PII masked for {request.user_role} display"
+    )
     
     # STEP 5: Log response decryption
     # Create sample of decryption process
@@ -1319,6 +1515,20 @@ async def chat(request: ChatMessage):
         "timestamp": datetime.utcnow().isoformat() + "Z"
     })
     
+    # Emit a concise LLM audit log with only the requested fields
+    structured_logger.log_step("llm_audit", {
+        "prompt": user_message,
+        "original_data": (json.dumps(specific_patient if specific_patient else {"patients": PATIENTS}, indent=2) if isinstance(specific_patient, dict) or specific_patient is None else str(specific_patient)),
+        "after_fpe_before_llm": {
+            "protected_prompt": protection_result['protected'],
+            "encrypted_context": encrypted_context
+        },
+        "nlp_response": ai_response,
+        "restored_with_original_data": decrypted_response,
+        "provider": "AWS Bedrock",
+        "model": "claude-3-haiku"
+    })
+
     if langfuse_client:
         main_trace.event(
             name="response_decrypted",

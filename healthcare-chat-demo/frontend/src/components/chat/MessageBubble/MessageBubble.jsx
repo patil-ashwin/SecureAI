@@ -50,10 +50,9 @@ const MessageBubble = ({
         <div>
           {/* Professional content container with border */}
           <div style={professionalStyles.contentContainer}>
-            <div 
-              style={professionalStyles.contentInner}
-              dangerouslySetInnerHTML={{ __html: formattedText }} 
-            />
+            <div style={professionalStyles.contentInner}>
+              <div dangerouslySetInnerHTML={{ __html: formattedText }} />
+            </div>
             
             {/* Add export functionality for ring analysis */}
             {hasRingAnalysis && ringId && (

@@ -32,14 +32,14 @@ const ChatInterface = ({ userInfo, onLogout }) => {
 
     const userMessage = inputValue.trim();
     setIsTyping(true);
+    // Clear input immediately to avoid showing the same text twice (in bubble and in box)
+    setInputValue('');
 
     try {
       await sendMessage(userMessage, {});
-      // Only clear input after successful message send
-      setInputValue('');
     } catch (error) {
       console.error('Error sending message:', error);
-      // Don't clear input on error, so user can retry
+      // Keep input empty; the user can retype or use arrow-up to retry
     } finally {
       setIsTyping(false);
     }
@@ -66,21 +66,28 @@ const ChatInterface = ({ userInfo, onLogout }) => {
       
       <div className={styles.chatContent}>
         <TimeBasedGreeting userInfo={userInfo} />
-        
+
+        {/* Show messages first so input stays below the latest response */}
         <MessageList 
           messages={messages}
-          isLoading={isLoading}
-          isTyping={isTyping}
+          loading={false}
+          isTyping={false}
         />
-        
+
+        {/* Prompt comes after responses */}
         <ChatInput
           value={inputValue}
           onChange={setInputValue}
           onSend={handleSubmit}
           disabled={isLoading}
           loading={isLoading || isTyping}
-          placeholder="Ask about patient diagnosis, medications, or treatment..."
+          placeholder="Ask anything"
         />
+
+        {/* Show a concise working indicator just below the prompt (left aligned) */}
+        {(isLoading || isTyping) && (
+          <div className={styles.workingIndicator}>We’re working on it…</div>
+        )}
       </div>
     </div>
   );

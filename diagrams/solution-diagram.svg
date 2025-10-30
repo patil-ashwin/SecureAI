@@ -1,0 +1,114 @@
+<svg width="900" height="900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="900" height="900" fill="#1a1a1a"/>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-size="24" font-weight="bold" fill="#44ff44" text-anchor="middle" font-family="Arial, sans-serif">
+    Solution: SecureAI FPE Protection
+  </text>
+  
+  <!-- User Query Box -->
+  <rect x="50" y="60" width="800" height="50" rx="8" fill="#2d2d2d" stroke="#44ff88" stroke-width="2"/>
+  <text x="60" y="80" font-size="14" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">User Query (Frontend)</text>
+  <text x="60" y="98" font-size="12" fill="#cccccc" font-family="Arial, sans-serif">"What are Ramesh Kumar's lab results?"</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 450 110 L 450 140" stroke="#44ff88" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- Backend Box -->
+  <rect x="100" y="150" width="700" height="200" rx="8" fill="#2d2d2d" stroke="#44ff88" stroke-width="2"/>
+  <text x="120" y="175" font-size="16" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">Healthcare Backend</text>
+  
+  <!-- Patient Database -->
+  <rect x="120" y="185" width="320" height="80" rx="4" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="135" y="205" font-size="12" fill="#cccccc" font-family="Arial, sans-serif">Patient Database</text>
+  <text x="135" y="222" font-size="11" fill="#888" font-family="Arial, sans-serif">• Name: Ramesh Kumar</text>
+  <text x="135" y="237" font-size="11" fill="#888" font-family="Arial, sans-serif">• Phone: +91-9876543210</text>
+  <text x="135" y="252" font-size="11" fill="#888" font-family="Arial, sans-serif">• DOB: 1978-03-15</text>
+  
+  <!-- Arrow to SecureAI -->
+  <path d="M 440 225 L 470 225" stroke="#44ff88" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- SecureAI Plugin Box -->
+  <rect x="470" y="185" width="320" height="155" rx="8" fill="#1e3a1e" stroke="#44ff88" stroke-width="2"/>
+  <text x="485" y="205" font-size="14" font-weight="bold" fill="#88ff88" font-family="Arial, sans-serif">SecureAI Plugin</text>
+  
+  <!-- PII Detector -->
+  <rect x="485" y="215" width="290" height="35" rx="4" fill="#2d4a2d" stroke="#55aa55" stroke-width="1"/>
+  <text x="495" y="230" font-size="11" fill="#88ff88" font-family="Arial, sans-serif">PII Detector</text>
+  <text x="495" y="243" font-size="10" fill="#aaffaa" font-family="Arial, sans-serif">Detects: Names, Phone, DOB, Address...</text>
+  
+  <!-- Arrow down -->
+  <path d="M 630 255 L 630 265" stroke="#44ff88" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- Encryption Layer -->
+  <rect x="485" y="265" width="290" height="45" rx="4" fill="#2d4a2d" stroke="#55aa55" stroke-width="1"/>
+  <text x="495" y="280" font-size="11" fill="#88ff88" font-family="Arial, sans-serif">Encryption Layer</text>
+  <text x="495" y="295" font-size="9" fill="#aaffaa" font-family="Arial, sans-serif">Names → "Arjun Sharma" | Phone → "+11-2331719318"</text>
+  <text x="495" y="305" font-size="9" fill="#aaffaa" font-family="Arial, sans-serif">Format Preserving (length + structure)</text>
+  
+  <!-- Arrow down -->
+  <path d="M 630 315 L 630 325" stroke="#44ff88" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- Mapping Storage -->
+  <rect x="485" y="325" width="290" height="25" rx="4" fill="#2d4a2d" stroke="#55aa55" stroke-width="1"/>
+  <text x="495" y="340" font-size="11" fill="#88ff88" font-family="Arial, sans-serif">Mapping: "Arjun Sharma" → "Ramesh Kumar"</text>
+  
+  <!-- Protected Data Label -->
+  <text x="450" y="370" font-size="14" font-weight="bold" fill="#44ff88" text-anchor="middle" font-family="Arial, sans-serif">✅ PROTECTED DATA - Encrypted PII/PHI</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 450 380 L 450 420" stroke="#44ff88" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- LLM Provider Box -->
+  <rect x="100" y="430" width="700" height="140" rx="8" fill="#2d2d2d" stroke="#44ff88" stroke-width="2"/>
+  <text x="120" y="455" font-size="16" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">LLM Provider (AWS Bedrock / OpenAI)</text>
+  <text x="120" y="480" font-size="12" font-weight="bold" fill="#44ffaa" font-family="Arial, sans-serif">📤 SENT DATA:</text>
+  <text x="135" y="498" font-size="11" fill="#cccccc" font-family="Arial, sans-serif">• "What are Arjun Sharma's lab results?"</text>
+  <text x="135" y="513" font-size="11" fill="#cccccc" font-family="Arial, sans-serif">• Patient: Arjun Sharma (encrypted)</text>
+  <text x="135" y="528" font-size="11" fill="#cccccc" font-family="Arial, sans-serif">• Contact: +11-2331719318 (encrypted)</text>
+  <text x="120" y="550" font-size="12" font-weight="bold" fill="#44ff88" font-family="Arial, sans-serif">✅ BENEFITS:</text>
+  <text x="135" y="565" font-size="11" fill="#88ff88" font-family="Arial, sans-serif">• No real PII in logs • HIPAA/GDPR compliant • Zero breach risk</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M 450 570 L 450 600" stroke="#44ff88" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- LLM Response Box -->
+  <rect x="50" y="600" width="800" height="40" rx="4" fill="#2d2d2d" stroke="#44ff88" stroke-width="1"/>
+  <text x="60" y="618" font-size="11" fill="#cccccc" font-family="Arial, sans-serif">LLM Response: "Arjun Sharma's HbA1c is 8.9%..."</text>
+  <text x="60" y="633" font-size="10" fill="#88ff88" font-family="Arial, sans-serif">(Contains encrypted PII - safe to store)</text>
+  
+  <!-- Arrow 4 -->
+  <path d="M 450 645 L 450 675" stroke="#44ff88" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- Decryption Layer Box -->
+  <rect x="100" y="685" width="700" height="120" rx="8" fill="#1e3a1e" stroke="#44ff88" stroke-width="2"/>
+  <text x="120" y="710" font-size="16" font-weight="bold" fill="#88ff88" font-family="Arial, sans-serif">SecureAI Decryption Layer</text>
+  
+  <!-- Reverse Mapping -->
+  <rect x="120" y="720" width="320" height="40" rx="4" fill="#2d4a2d" stroke="#55aa55" stroke-width="1"/>
+  <text x="135" y="735" font-size="11" fill="#88ff88" font-family="Arial, sans-serif">Reverse Mapping</text>
+  <text x="135" y="750" font-size="10" fill="#aaffaa" font-family="Arial, sans-serif">"Arjun Sharma" → "Ramesh Kumar"</text>
+  
+  <!-- Role-Based Restoration -->
+  <rect x="470" y="720" width="320" height="65" rx="4" fill="#2d4a2d" stroke="#55aa55" stroke-width="1"/>
+  <text x="485" y="735" font-size="11" fill="#88ff88" font-family="Arial, sans-serif">Role-Based Restoration</text>
+  <text x="485" y="750" font-size="10" fill="#aaffaa" font-family="Arial, sans-serif">• Doctor: Full original data</text>
+  <text x="485" y="765" font-size="10" fill="#aaffaa" font-family="Arial, sans-serif">• Nurse: Masked PII, full medical info</text>
+  
+  <!-- Arrow 5 -->
+  <path d="M 450 810 L 450 840" stroke="#44ff88" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- Final Response Box -->
+  <rect x="50" y="840" width="800" height="50" rx="8" fill="#2d2d2d" stroke="#44ff88" stroke-width="2"/>
+  <text x="60" y="860" font-size="14" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">Final Response to User</text>
+  <text x="60" y="880" font-size="12" fill="#88ff88" font-family="Arial, sans-serif">"Ramesh Kumar's HbA1c is 8.9%..." (Restored based on role)</text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#44ff88"/>
+    </marker>
+  </defs>
+</svg>
+
